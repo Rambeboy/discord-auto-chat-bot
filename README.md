@@ -69,11 +69,11 @@ This is a simple Discord bot script that allows you to send messages to multiple
     node app/index.js
     ```
 2. **Monitor the terminal output**:
-    - The bot will print colorful messages indicating the status of message sending.
-    - If any errors occur, they will be displayed in red.
+- The bot will print colorful messages indicating the status of message sending.
+- If any errors occur, they will be displayed in red.
 
 3. **Customize your configuration**:
-    - You can modify the `config.yaml` file to add more tokens, channel IDs, and adjust delays as needed.
+- You can modify the `config.yaml` file to add more tokens, channel IDs, and adjust delays as needed.
 
 ## Example `chat.txt`
 
