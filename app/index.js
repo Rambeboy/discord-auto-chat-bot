@@ -13,12 +13,44 @@ function displayBanner() {
     whitespaceBreak: true
   })));
   console.log(_0x2cc7ee.cyan("========================================="));
-  console.log(_0x2cc7ee.cyan("          Author : Nofan Rambe           "));
-  console.log(_0x2cc7ee.cyan("          Welcome & Enjoy Sir!           "));
+  console.log(_0x2cc7ee.cyan("Author : Nofan Rambe                     "));
+  console.log(_0x2cc7ee.cyan("Welcome & Enjoy Sir!                     "));
   console.log(_0x2cc7ee.cyan("========================================="));
 }
+class DiscordBot {
+  constructor(_0x753c7e) {
+    this.baseUrl = "https://discord.com/api/v9";
+    this.headers = {
+      'Authorization': _0x753c7e
+    };
+    this.username = this.getUsername();
+  }
+  async ["getUsername"]() {
+    const _0x768b19 = await _0x11f6bc.get(this.baseUrl + "/users/@me", {
+      'headers': this.headers
+    });
+    return _0x768b19.data.username + '#' + _0x768b19.data.discriminator;
+  }
+  async ["sendMessage"](_0x3e4f75, _0x509018) {
+    const _0x1a406c = {
+      'content': _0x509018
+    };
+    const _0x523f9b = await _0x11f6bc.post(this.baseUrl + "/channels/" + _0x3e4f75 + '/messages', _0x1a406c, {
+      'headers': this.headers
+    });
+    return _0x523f9b.data;
+  }
+}
+async function loadConfig(_0xebf0a8 = 'config/config.js') {
+  const _0x18699f = _0x2c7e25.readFileSync(_0xebf0a8, "utf8");
+  return _0x1eafd3.parse(_0x18699f);
+}
+function loadMessages(_0x35f031 = "config/chat.txt") {
+  const _0x4d2a84 = _0x2c7e25.readFileSync(_0x35f031, "utf8");
+  return _0x4d2a84.split("\n").map(_0x145986 => _0x145986.trim()).filter(_0x2e6381 => _0x2e6381.length > 0x0);
+}
 async function main() {
-  displayBanner(); 
+  displayBanner();
   const _0x717993 = await loadConfig();
   const _0x4b1a37 = loadMessages();
   if (!_0x717993.token) {
@@ -49,17 +81,16 @@ async function main() {
           }
           await new Promise(_0x52b0a4 => setTimeout(_0x52b0a4, _0x179c35 * 0x3e8));
         }
-        console.log(_0x2cc7ee.yellow("[INFO] Waiting for " + _0x59b00b + " Seconds before processing the next token..."));
+        console.log(_0x2cc7ee.yellow("[INFO] Waiting for " + _0x59b00b + " seconds before processing the next token..."));
         await new Promise(_0x2d319a => setTimeout(_0x2d319a, _0x59b00b * 0x3e8));
       } catch (_0x162067) {
         console.error(_0x2cc7ee.red("[CRITICAL ERROR] Skipping token due to error: " + _0x162067.name + ": " + _0x162067.message));
       }
     }
-    console.log(_0x2cc7ee.yellow("[INFO] Waiting for " + _0x4bcbdd + " Seconds before restarting..."));
+    console.log(_0x2cc7ee.yellow("[INFO] Waiting for " + _0x4bcbdd + " seconds before restarting..."));
     await new Promise(_0x542db0 => setTimeout(_0x542db0, _0x4bcbdd * 0x3e8));
   }
 }
-
 main()["catch"](_0x409605 => {
   console.error(_0x2cc7ee.red("[CRITICAL ERROR] " + _0x409605.name + ": " + _0x409605.message));
 });
