@@ -73,7 +73,7 @@ This is a simple Discord bot script that allows you to send messages to multiple
 - If any errors occur, they will be displayed in red.
 
 3. **Customize your configuration**:
-- You can modify the `config.yaml` file to add more tokens, channel IDs, and adjust delays as needed.
+- You can modify the `config.js` file to add more tokens, channel IDs, and adjust delays as needed.
 
 ## Example `chat.txt`
 
